@@ -6,13 +6,14 @@ import getPokemonTypeName from 'pokemon/domain/services/get-pokemon-type-name';
 import getRgbColorByPokemonType from 'pokemon/domain/services/get-rgb-color-by-pokemon-type';
 import { PokemonType } from 'pokemon/domain/value-objects/pokemon-type';
 import { PokemonEntity } from 'pokemon/domain/entities/pokemon';
+import { PokemonTypeName } from 'pokemon/domain/enums/pokemon-type';
 
 type PokemonCardProps = {
   data: PokemonEntity;
 };
 
-const PokemonCardUI = async ({ data }: PokemonCardProps) => {
-  const rgbColor = getRgbColorByPokemonType(data.types[0]);
+const PokemonCardUI = ({ data }: PokemonCardProps) => {
+  const rgbColor = getRgbColorByPokemonType(data.types[0].type.name as PokemonTypeName);
 
   return (
     <Link

@@ -9,10 +9,7 @@ import * as Table from 'pokemon/components/presenters/table/table';
 const PokemonEncountersTable = async ({ url }: { url: string }) => {
   const locations = await axios
     .get(url)
-    .then((res) => {
-      console.log('res: ', res.data);
-      return res.data;
-    })
+    .then((res) => res.data)
     .catch((err) => console.error(err));
 
   if (!locations) notFound();

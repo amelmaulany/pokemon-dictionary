@@ -3,9 +3,14 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const PokemonCardNotFound = () => {
   return (
-    <div className="flex h-[90px] w-full flex-col items-center gap-3 rounded-lg border border-neutral-300 bg-neutral-50">
-      <FontAwesomeIcon icon={faTriangleExclamation} fontSize={20} fixedWidth />
-      <span className="text-base text-neutral-700">Pokemon not found.</span>
+    <div className="flex h-[90px] w-full flex-col items-center justify-center gap-1 rounded-lg border border-neutral-300 bg-neutral-50 p-3">
+      <FontAwesomeIcon
+        icon={faTriangleExclamation}
+        fontSize={24}
+        fixedWidth
+        className="text-red-300"
+      />
+      <span className="text-sm text-neutral-500">Pokemon not found.</span>
     </div>
   );
 };
