@@ -7,9 +7,6 @@ export async function getAllTypes() {
 
   return await api
     .listTypes()
-    .then((res) => {
-      console.table(res.results);
-      return res;
-    })
+    .then((res) => res)
     .catch((err) => console.error(err));
 }

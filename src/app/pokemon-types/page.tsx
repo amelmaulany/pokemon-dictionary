@@ -2,6 +2,11 @@ import { notFound } from 'next/navigation';
 import { getAllTypes } from '../../infrastructure/api/types/get-all-types';
 import PokemonTypeCard from 'pokemon/components/containers/pokemon-type/pokemon-type';
 
+export const metadata = {
+  title: 'Pokémon Types',
+  description: 'Pokémon Types',
+};
+
 const PokemonTypesPage = async () => {
   const types = await getAllTypes();
 

@@ -14,7 +14,7 @@ export default async function PokemonsPage() {
   return (
     <div className="grid grid-cols-4 gap-3">
       {pokemons.results.map((res, i) => (
-        <PokemonCard key={i} data={res} />
+        <PokemonCard key={i} url={res.url} />
       ))}
     </div>
   );

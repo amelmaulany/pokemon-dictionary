@@ -9,11 +9,15 @@ export const Root = ({ children }: { children: ReactNode }) => {
 };
 
 export const Head = ({ children }: { children: ReactNode }) => {
-  return <thead className="border border-neutral-400 bg-neutral-100">{children}</thead>;
+  return <thead className="border border-neutral-400 bg-neutral-50">{children}</thead>;
 };
 
 export const Th = ({ children }: { children: string }) => {
-  return <th className="w-max whitespace-nowrap px-2 py-1 text-sm font-medium">{children}</th>;
+  return (
+    <th className="w-max whitespace-nowrap border border-neutral-400 px-2 py-1 text-sm font-medium">
+      {children}
+    </th>
+  );
 };
 
 export const Td = ({
@@ -29,7 +33,7 @@ export const Td = ({
     <td
       colSpan={colSpan}
       rowSpan={rowSpan}
-      className="w-max whitespace-nowrap bg-white px-2 py-1 text-sm"
+      className="w-max whitespace-nowrap border border-neutral-400 bg-white px-2 py-1 text-sm"
     >
       {children}
     </td>
@@ -42,4 +46,8 @@ export const HeadTr = ({ children }: { children: ReactNode }) => {
 
 export const Body = ({ children }: { children: ReactNode }) => {
   return <tbody className="border border-neutral-400">{children}</tbody>;
+};
+
+export const Tr = ({ children }: { children: ReactNode }) => {
+  return <tr className="border border-neutral-400">{children}</tr>;
 };

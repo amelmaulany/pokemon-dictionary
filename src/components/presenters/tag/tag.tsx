@@ -18,10 +18,10 @@ const Tag = ({ color, icon, label }: TagProps) => {
         backgroundColor: `rgba(${rgbColor.red}, ${rgbColor.green}, ${rgbColor.blue}, 0.1  )`,
         color,
       }}
-      className="flex items-center gap-1 rounded-md bg-white px-[6px] py-[2px] text-xs"
+      className="flex w-fit items-center gap-1 rounded-md bg-white px-[6px] py-[2px] text-xs"
     >
       <FontAwesomeIcon icon={icon} fixedWidth fontSize={14} />
-      <span>{label}</span>
+      <span className="font-medium text-neutral-600">{label}</span>
     </div>
   );
 };

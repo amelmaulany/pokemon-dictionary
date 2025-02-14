@@ -35,7 +35,9 @@ const PokemonCardUI = ({ data }: PokemonCardProps) => {
       )}
       <div className="flex flex-col gap-2">
         <div className="flex flex-col">
-          <span className="text-lg font-semibold capitalize text-neutral-700">{data.name}</span>
+          <span className="line-clamp-1 text-ellipsis text-lg font-semibold capitalize text-neutral-700">
+            {data.name}
+          </span>
           <span className="text-sm italic text-neutral-500">
             {getPokemonFormattedOrder(data.order)}
           </span>

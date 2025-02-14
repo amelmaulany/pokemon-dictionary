@@ -11,17 +11,22 @@ import DetailsDataContainer from 'pokemon/components/presenters/details-data-con
 import PokemonAbility from './pokemon-ability';
 // import PokemonMovesTable from './pokemon-moves';
 import { PokemonType } from 'pokemon/domain/value-objects/pokemon-type';
+import SlugPageContainer from 'pokemon/components/presenters/slug-page-container/slug-page-container';
+import MovesSection from 'pokemon/app/pokemon-types/[slug]/moves-section';
+
+export const metadata = {
+  title: 'Pokémon Details',
+  description: 'Pokémons Details',
+};
 
 const PokemonSlugPage = async ({ params }: { params: Promise<{ slug: string }> }) => {
   const name = (await params).slug;
 
   const pokemon = await getPokemonByName(name);
 
-  const subtitle = 'text-base font-semibold text-neutral-700';
-
   if (!pokemon) notFound();
   return (
-    <div className="relative flex flex-col gap-2">
+    <SlugPageContainer>
       <PokemonFixedGif pokemon={pokemon} />
       <div className="flex items-center gap-8">
         {pokemon.sprites.other && pokemon.sprites.other['official-artwork'].front_default && (
@@ -60,17 +65,15 @@ const PokemonSlugPage = async ({ params }: { params: Promise<{ slug: string }> }
 
       <div className="grid grid-cols-2 gap-3">
         {pokemon.location_area_encounters.length > 0 && (
-          <DetailsDataContainer>
-            <span className={subtitle}>Encounters</span>
+          <DetailsDataContainer title="Encounters">
             <div className="w-full overflow-x-auto pb-3">
               <PokemonEncountersTable url={pokemon.location_area_encounters} />
             </div>
           </DetailsDataContainer>
         )}
 
-        <div className="grid grid-cols-2 gap-3">
-          <DetailsDataContainer>
-            <span className={subtitle}>Abilities</span>
+        <div className="flex flex-col gap-3">
+          <DetailsDataContainer title="Abilities">
             <div className="flex flex-col gap-3">
               {pokemon.abilities.map((ability, i) => (
                 <PokemonAbility key={i} url={ability.ability.url} />
@@ -78,13 +81,10 @@ const PokemonSlugPage = async ({ params }: { params: Promise<{ slug: string }> }
             </div>
           </DetailsDataContainer>
 
-          {/* <DetailsDataContainer>
-            <span className={subtitle}>Moves</span>
-            <PokemonMovesTable pokemon={pokemon} />
-          </DetailsDataContainer> */}
+          <MovesSection data={pokemon.moves.map((m) => m.move)} />
         </div>
       </div>
-    </div>
+    </SlugPageContainer>
   );
 };
 

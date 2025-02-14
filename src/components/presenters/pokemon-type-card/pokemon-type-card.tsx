@@ -12,7 +12,7 @@ const PokemonTypeCardUI = ({ data }: PokemonTypeCard) => {
 
   return (
     <Link
-      href={`/pokeon-types/${data.name}`}
+      href={`/pokemon-types/${data.name}`}
       className="flex items-center gap-2 rounded-md border bg-neutral-50 px-[10px] py-2 hover:opacity-70"
     >
       <div
